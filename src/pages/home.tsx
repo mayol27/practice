@@ -19,14 +19,14 @@ export default function Home() {
       eventName: "Home",
       services: "General Cleaning",
       date: "04/15/2023",
-      status: false,
+      status: true,
     },
     {
       id: uuidv4(),
       eventName: "Laundry",
       services: "Wash Clothes",
       date: "03/03/2023",
-      status: false,
+      status: true,
     },
     {
       id: uuidv4(),
@@ -44,7 +44,7 @@ export default function Home() {
           id: uuidv4(),
           eventName: eventName,
           services: services,
-          date: startDate,
+          date: "not working",
           status: false,
         },
         ...items,
@@ -136,6 +136,9 @@ export default function Home() {
               <thead className="text-xs text-white uppercase  dark:bg-primary">
                 <tr>
                   <th scope="col" className="px-6 py-3">
+                    status
+                  </th>
+                  <th scope="col" className="px-6 py-3">
                     event name
                   </th>
                   <th scope="col" className="px-6 py-3">
@@ -151,7 +154,21 @@ export default function Home() {
               </thead>
               <tbody>
                 {items.map((item) => (
-                  <tr className=" border-b bg-primaryLight dark:border-gray-700">
+                  <tr
+                    className={`border-b  border-gray-700 ${
+                      item.status === true ? "bg-primaryLight" : ""
+                    }`}
+                  >
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium text-secondary whitespace-nowrap"
+                    >
+                      {item.status === true ? (
+                        <p className="font-bold uppercase">Done</p>
+                      ) : (
+                        <p className="font-bold uppercase">ongoing</p>
+                      )}
+                    </th>
                     <th
                       scope="row"
                       className="px-6 py-4 font-medium text-secondary whitespace-nowrap"
