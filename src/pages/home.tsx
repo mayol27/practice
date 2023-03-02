@@ -5,8 +5,6 @@ import Edit from "./../images/edit.png";
 import Delete from "./../images/delete.png";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 export default function Home() {
   const [eventName, setEventName] = useState("");
@@ -74,19 +72,6 @@ export default function Home() {
           </div>
           <div className="px-3 col-span-12 md:col-span-6">
             <label className="block tracking-wide text-secondary text-xs font-bold mb-2">
-              Event Date
-            </label>
-            {/* <DatePicker
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-            /> */}
-            <DatePicker
-              selected={startDate}
-              onChange={(startDate) => setStartDate(startDate)}
-            />
-          </div>
-          <div className="px-3 col-span-12 md:col-span-6">
-            <label className="block tracking-wide text-secondary text-xs font-bold mb-2">
               Services
             </label>
             <div className="inline-block relative w-full">
@@ -107,6 +92,16 @@ export default function Home() {
                 <Image src={ArrowDown} alt="down" width={16} height={16} />
               </div>
             </div>
+          </div>
+          <div className="px-3 col-span-12 md:col-span-6">
+            <label className="block tracking-wide text-secondary text-xs font-bold mb-2">
+              Event Date
+            </label>
+            <input
+              className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+              id="username"
+              type="text"
+            />
           </div>
           <div className="py-2 px-3 md:px-0 flex justify-end col-span-12">
             <button
@@ -155,6 +150,7 @@ export default function Home() {
               <tbody>
                 {items.map((item) => (
                   <tr
+                    key={item.id}
                     className={`border-b  border-gray-700 ${
                       item.status === true ? "bg-primaryLight" : ""
                     }`}
